@@ -26,4 +26,4 @@ A project on how to create a CRUD based application in Laravel PHP framework, My
 ## License
 This program is free software published under the terms of the GNU [Lesser General Public License](http://www.gnu.org/copyleft/lesser.html). You can freely use it for commercial or non-commercial purposes.
 
-![ScreenShot](https://raw.github.com/Patwan/crud-based-app/master/screenshot.png)
+![ScreenShot](https://raw.github.com/Patwan/crud-based-app-busara/blob/master/screenshot.png)
