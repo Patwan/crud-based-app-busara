@@ -14,8 +14,9 @@
  <link href="{{ asset('css/parsley.css') }}" rel="stylesheet">
 
 <!-- font-awesome icons -->
-<link href="{{ asset('css/Formstyle/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 <!-- //font-awesome icons -->
+<link href="{{ asset('css/popup-box.css') }}" rel="stylesheet" type="text/css">
 
 <!-- web font -->
 <link href="//fonts.googleapis.com/css?family=Cormorant+Unicase:300,400,500,600,700" rel="stylesheet"><!--web font-->
@@ -23,6 +24,8 @@
 </head>
 <body>
 @yield('content')
+
+@include('partials._footer')
 
 </body>
 </html>

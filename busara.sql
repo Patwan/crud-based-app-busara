@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2018 at 11:35 AM
+-- Generation Time: Jul 12, 2018 at 07:56 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -66,7 +66,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_100000_create_password_resets_table', 1),
 (2, '2017_09_11_035457_create_admins_table', 1),
 (5, '2018_07_09_090056_create_products_table', 2),
-(6, '2018_07_10_025203_create_users_table', 3);
+(8, '2018_07_10_025203_create_users_table', 3);
 
 -- --------------------------------------------------------
 
@@ -124,6 +124,9 @@ INSERT INTO `products` (`id`, `name`, `email`, `description`, `phone`, `age`, `i
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `google_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avatar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -135,8 +138,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Client One', 'user@user.com', '$2y$10$owAvcoDbbBZ2YJZQMw7QW.RIUfn0X2/R65MGTkSx4MgHH5CcHIgNm', 'bTWMCQEPHTTZR76KnUkg0BPJhsiMbj55NFBzRrL023HBU0OYMSmaD643EctX', '2018-07-10 01:54:52', '2018-07-10 01:54:52');
+INSERT INTO `users` (`id`, `name`, `google_id`, `facebook_id`, `avatar`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Client One', NULL, NULL, NULL, 'user@user.com', '$2y$10$Jn0c6HnS.T7xydakZTUOdupSZWZClWC6GS5mgMXxopkR3eYQUl.6W', 'iS7ElVEeJ8EAK55AZZLxV2qtAyYJVdpafvnU7yORuKJPhp9ZcuICsHut31HF', '2018-07-11 23:43:09', '2018-07-11 23:43:09');
 
 --
 -- Indexes for dumped tables
@@ -190,7 +193,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`

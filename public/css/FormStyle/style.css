@@ -402,6 +402,43 @@ label a:hover {
 }
 /*-- //copyright --*/
 
+/*SOCIAL MEDIA*/
+ul.top-links li {
+    margin-left: 5px;
+    display: inline-block;
+}
+ul.top-links li a i.fa {
+    color: #000;
+    background-color: #fff;
+    width: 38px;
+    height: 38px;
+    font-size: 17px;
+    line-height: 38px;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+}
+ul.top-links {
+    margin: 1em 0 0;
+}
+.top-links li a i.fa.fa-facebook {
+    color: #ffffff;
+    background-color: #3b5998;
+}
+.top-links li a i.fa.fa-google{
+    color: #ffffff;
+    background-color: #DD4B39;
+}
+/*END*/
+
 .register input[type="text"],.register input[type="email"],.register input[type="password"],.register input[type="tel"]{
     font-size: 1em;
     color: #000;

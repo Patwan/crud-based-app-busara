@@ -35,11 +35,18 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    //Facebook Login
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),    
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'), 
+        'redirect' => env('CALLBACK_URL'),
+    ],
+
     //Google Login
     'google' => [
-        'client_id' => env('**********************************************'),    
-        'client_secret' => env('***********************************'), 
-        'redirect' => 'https://www.pwebk.com/user',
+        'client_id' => env('GOOGLE_CLIENT_ID'),    
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), 
+        'redirect' => env('CALLBACK_URL'),
     ],
 
 ];

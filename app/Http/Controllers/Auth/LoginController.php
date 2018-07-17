@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
+use Auth;
 use Socialite;
 
 class LoginController extends Controller
@@ -43,27 +45,100 @@ class LoginController extends Controller
     }
 
     /**
-     * Redirect the user to the Google authentication page.
+     * Redirect the user to the Facebook OAuth.
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Redirect users after being authenticated
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function facebookCallback()
+    {
+        try{
+            $user= Socialite::driver('facebook')->user();
+        }
+        catch(Exception $e){
+            return redirect('/');
+        }
+
+        //dd(user);
+
+        $authUser = $this->findOrCreateUser($user);
+
+        $avatar = $user->avatar;
+
+        Auth::login($authUser, true);
+
+        return redirect()->route('show.contact')->withAv($avatar);
+    }
+
+     public function findOrCreateUser($facebookUser){
+
+        //Check if email exists in database
+        $authUser = User::where('email', $facebookUser->email)->first();
+
+        if($authUser){
+            return $authUser;
+        }
+
+        return User::create([
+            'name' => $facebookUser->name,
+            'email' => $facebookUser->email,
+            'facebook_id' => $facebookUser->id,
+            'avatar' => $facebookUser->avatar,
+            'password' => bcrypt(1234567)
+        ]);
+    }
+
+    // Redirect the user to the Google OAuth.
+
+    public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
     }
 
-    /**
-     * Obtain the user information from google.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function handleProviderCallback()
-    {
-        $user = Socialite::driver('google')->stateless()->user();
+    //Redirect users after being authenticated
+     public function googleCallback(){
+        try{
+            $user= Socialite::driver('google')->stateless()->user();
+        }
+        catch(Exception $e){
+            return redirect('/');
+        }
 
-        // $user->token;
+        // dd($user);
+
+        $authUser = $this->createUser($user);
+
+        Auth::login($authUser, true);
+
+        return redirect()->route('show.contact');
+    }
+
+     public function createUser($googleUser){
+
+        //Check if email exists in database
+        $authUser = User::where('email', $googleUser->email)->first();
+
+        //dd($authUser)
         
-        //Redirect to apge after Google login
-        // return redirect()->route('show.contact');
+        if($authUser){
+            return $authUser;
+        }
+
+        return User::create([
+            'name' => $googleUser->name,
+            'email' => $googleUser->email,
+            'google_id' => $googleUser->id,
+            'avatar' => $googleUser->avatar,
+            'password' => bcrypt(1234567)
+        ]);
     }
 }

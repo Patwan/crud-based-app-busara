@@ -7,7 +7,7 @@ A project on how to create a CRUD based application in Laravel PHP framework, My
 * CRUD based system by authenticated admin.
 * Ability to upload and download files
 * Client-side and server-side validation parameters to enhance security
-* etc
+* OAuth login ~ Ability to login via social media sites eg facebook, Google
 
 ## Installation
 * Download the folder using **git clone**

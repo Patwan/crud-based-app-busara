@@ -46,6 +46,21 @@ Route::get('/user', 'UserController@showCont')->name('show.contact');
 Route::get('/getPDF', 'PDFController@getPDF')->name('get.pdf');
 
 
+/*Facebook login credentials*/
+//Redirect users to oAuth provider
+Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('facebook.login');
+//Redirect users after authentication
+Route::get('auth/facebook/callback', 'Auth\LoginController@facebookCallback');
+/*End*/
+
+/*Google login credentials*/
+//Redirect users to oAuth provider
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('google.login');
+//Redirect users after authentication
+Route::get('auth/google/callback', 'Auth\LoginController@googleCallback');
+/*End*/
+
+
 
 
 
